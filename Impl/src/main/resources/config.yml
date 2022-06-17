@@ -119,6 +119,11 @@ discord:
 # for all plugins in the config.yml within the plugins/metrics folder.
 metrics: true
 
+# Configure fixes that work around certain problems in Minecraft
+fixes:
+  # Try to unstuck a player from blocks when falsely flagged?
+  fixMovementBugs: true
+
 # Configure all the detections and their states here.
 # Enabled (whether or not the check is enabled); Executable (should this detection ban a player?);
 # Cancellable (should the detection cancel player actions?)

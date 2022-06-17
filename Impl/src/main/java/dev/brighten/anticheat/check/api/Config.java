@@ -71,4 +71,7 @@ public class Config {
 
     @ConfigSetting(name = "metrics")
     public static boolean metrics = true;
+
+    @ConfigSetting(path = "fixes", name = "fixMovementBugs")
+    static boolean fixMovementBugs = true;
 }

@@ -339,16 +339,19 @@ public class Check implements KauriCheck {
 
 
     public void fixMovementBugs() {
-        BukkitAPI.INSTANCE.setGliding(data.getPlayer(), false);
-        if(ProtocolVersion.getGameVersion().isBelow(ProtocolVersion.v1_18))
-        RunUtils.task(() -> {
-            synchronized (data.blockInfo.blocks) {
-                for (Block b : data.blockInfo.blocks) {
-                    data.getPlayer()
-                            .sendBlockChange(b.getLocation(), b.getType(), b.getData());
-                }
-            }
-        });
+        if (Config.fixMovementBugs) {
+            BukkitAPI.INSTANCE.setGliding(data.getPlayer(), false);
+
+            if (ProtocolVersion.getGameVersion().isBelow(ProtocolVersion.v1_18))
+                RunUtils.task(() -> {
+                    synchronized (data.blockInfo.blocks) {
+                        for (Block b : data.blockInfo.blocks) {
+                            data.getPlayer()
+                                    .sendBlockChange(b.getLocation(), b.getType(), b.getData());
+                        }
+                    }
+                });
+        }
     }
 
     private String formatAlert(String toFormat, String info) {
