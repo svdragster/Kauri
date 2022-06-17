@@ -197,6 +197,9 @@ public class PacketProcessor {
 
     public void processClient(ObjectData data, Object object, String type,
                                            long timestamp) {
+        if (data.checkManager == null) {
+            return;
+        }
         switch (type) {
             case Packet.Client.ABILITIES: {
                 WrappedInAbilitiesPacket packet = new WrappedInAbilitiesPacket(object, data.getPlayer());
